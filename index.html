@@ -63,7 +63,7 @@
       const showSpecificModal = () => {
         const modalNum = prompt('Type the modal # that you want to show.');
         console.log('"voyage_modal" Cookie has been deleted.');
-        document.cookie = 'voyage_modal=' + modalNum + 'path=/;';
+        document.cookie = 'voyage_modal=' + modalNum + ';path=/;';
         location.reload();
       };
     </script>
