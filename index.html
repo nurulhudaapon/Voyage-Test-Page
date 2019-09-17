@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Modal Testing</title>
     <script type="text/javascript">
       /* <![CDATA[ */
       (function() {
@@ -19,13 +19,19 @@
           })(fns[i]);
         }
       })();
-      voyage.init('PublicGUID', { popup: true });
+      voyage.init('af40ad', { popup: true });
       /* ]]> */
     </script>
-    <script
-      async
-      src="https://assets.voyagetext.com/voyage.production.js"
-    ></script>
+    <script async src="https://assets.voyagetext.com/voyage.test.js"></script>
   </head>
-  <body></body>
+  <body>
+    <button onclick="showModal()">Show Modal</button>
+    <script>
+      const showModal = () => {
+        document.cookie =
+          'voyage_modal_first_visit=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+        location.reload();
+      };
+    </script>
+  </body>
 </html>
