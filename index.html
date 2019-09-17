@@ -28,8 +28,10 @@
     <button onclick="showModal()">Show Modal</button>
     <script>
       const showModal = () => {
+        console.log('"voyage_modal" Cookie has been deleted.');
+
         document.cookie =
-          'voyage_modal_first_visit=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+          'document.cookie = "voyage_modal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"';
         location.reload();
       };
     </script>
