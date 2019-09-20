@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modal Testing</title>
+    <script src="main.js"></script>
+    <script>
+      const stagingPubGuid = '6fdf88c0c3';
+      const testPubGuid = 'af40ad';
+      const currentEnv = localStorage.getItem('env') || 'staging';
+      const getPubGuid = () => {
+        console.log(currentEnv);
+
+        if (currentEnv == 'staging') return stagingPubGuid;
+        if (currentEnv == 'test') return testPubGuid;
+      };
+      const pubGuid = getPubGuid();
+      console.log(pubGuid);
+    </script>
+    <script type="text/javascript">
+      /* <![CDATA[ */
+      (function() {
+        if (window.voyage) return;
+        window.voyage = { q: [] };
+        var fns = ['init', 'track'];
+        for (var i = 0; i < fns.length; i++) {
+          (function(fn) {
+            window.voyage[fn] = function() {
+              this.q.push([fn, arguments]);
+            };
+          })(fns[i]);
+        }
+      })();
+      voyage.init(pubGuid, { popup: true });
+      /* ]]> */
+    </script>
+    <script>
+      loadScript(
+        'https://assets.voyagetext.com/voyage.' + currentEnv + '.js',
+        () => {
+          console.log('Voyage script loaded dynamacillay according to env');
+        }
+      );
+    </script>
+  </head>
+  <body>
+    <h4>Current Env: <span id="env-name"></span></h4>
+    <button onclick="setEnv('staging')">Set Env to Staging</button>
+    <button onclick="setEnv('test')">Set Env to Test</button>
+    <hr />
+    <br />
+    <button onclick="showModal()">Show Modal</button><hr>
+    <h4>Show Specific Modal</h4>
+    <button onclick="showSpecificModal(prompt('Type the modal # (Open After # Previous Modals) that you want to show.'))">Modal By #</button>
+    <button onclick="showSpecificModal(0)">Full</button>
+    <button onclick="showSpecificModal(3)">Floating</button>
+    <button onclick="showSpecificModal(4)">Bottom</button>
+    <p>Will add more soon</p>
+
+    <hr>
+    <p>Currently using Woostersuit as the tenant</p>
+    <p>Full: 19 sept full</p>
+    <p>Half: Test bottom half</p>
+    <p>Floating: Test Floating Save</p>
+    
+
+    <script>
+      const showModal = () => {
+        console.log('"voyage_modal" Cookie has been deleted.');
+        document.cookie =
+          'voyage_modal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        location.reload();
+      };
+      const showSpecificModal = (modalNum) => {
+        // const modalNum = prompt('Type the modal # that you want to show.');
+        console.log('"voyage_modal" Cookie has been deleted.');
+        document.cookie = 'voyage_modal=' + modalNum + ';path=/;';
+        location.reload();
+      };
+    </script>
+    <script src="document.js"></script>
+  </body>
+</html>
