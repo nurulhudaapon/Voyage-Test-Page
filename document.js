@@ -3,4 +3,8 @@ const setEnv = env => {
   location.reload();
 };
 
+const setPubGuid = (env)=>{
+  localStorage.setItem(env+"-pubGuid");
+}
+
 document.querySelector('#env-name').innerText = currentEnv;
