@@ -1,96 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Modal Testing</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js"></script>
-    <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Modal Testing</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+  <script>
     //   const stagingPubGuid = '6fdf88c0c3';
-      const stagingPubGuid = 'f2b9bebcd4';
-    
-      const testPubGuid = 'af40ad';
-      const currentEnv = localStorage.getItem('env') || 'staging';
-      const getPubGuid = () => {
-        console.log(currentEnv);
+    const stagingPubGuid = 'f2b9bebcd4';
 
-        if (currentEnv == 'staging') return stagingPubGuid;
-        if (currentEnv == 'test') return testPubGuid;
-      };
-      const pubGuid = getPubGuid();
-      console.log(pubGuid);
-    </script>
-    <script type="text/javascript">
-      /* <![CDATA[ */
-      (function() {
-        if (window.voyage) return;
-        window.voyage = { q: [] };
-        var fns = ['init', 'track'];
-        for (var i = 0; i < fns.length; i++) {
-          (function(fn) {
-            window.voyage[fn] = function() {
-              this.q.push([fn, arguments]);
-            };
-          })(fns[i]);
-        }
-      })();
-      voyage.init(pubGuid, { popup: true });
+    const testPubGuid = 'af40ad';
+    const currentEnv = localStorage.getItem('env') || 'staging';
+    const getPubGuid = () => {
+      console.log(currentEnv);
+
+      if (currentEnv == 'staging') return stagingPubGuid;
+      if (currentEnv == 'test') return testPubGuid;
+    };
+    const pubGuid = getPubGuid();
+    console.log(pubGuid);
+  </script>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    (function () {
+      if (window.voyage) return;
+      window.voyage = { q: [] };
+      var fns = ['init', 'track'];
+      for (var i = 0; i < fns.length; i++) {
+        (function (fn) {
+          window.voyage[fn] = function () {
+            this.q.push([fn, arguments]);
+          };
+        })(fns[i]);
+      }
+    })();
+    voyage.init(pubGuid, { popup: true });
       /* ]]> */
-    </script>
-    <script>
-      loadScript(
-        'https://assets.voyagetext.com/voyage.' + currentEnv + '.js',
-        () => {
-          console.log('Voyage script loaded dynamacillay according to env');
-        }
-      );
-    </script>
-  </head>
-  <body>
-    <h3 class="tc">Modal Testing</h3><hr>
-      <h4>Set Environment</h4>
-      <button onclick="setEnv('staging')">Staging</button>
-      <button onclick="setEnv('test')">Test</button>
-      <p>Current Env: <span id="env-name"></span></p>
+  </script>
+  <script>
+    loadScript(
+      'https://assets.voyagetext.com/voyage.' + currentEnv + '.js',
+      () => {
+        console.log('Voyage script loaded dynamacillay according to env');
+      }
+    );
+  </script>
+</head>
 
-    <!-- <h3>Public GUID</h3>
+<body>
+  <h3 class="tc">Modal Testing</h3>
+  <hr>
+  <h4>Set Environment</h4>
+  <button onclick="setEnv('staging')">Staging</button>
+  <button onclick="setEnv('test')">Test</button>
+  <p>Current Env: <span id="env-name"></span></p>
+
+  <!-- <h3>Public GUID</h3>
     <h5>Set</h5>
     <button onclick="setPubGuid('staging')">Staging</button>
     <button onclick="setPubGuid('test')">Test</button>
     <h5>Current</h5> -->
 
-    <hr/>
-    <h4>Show Modal</h4>
-    <button onclick="showModal()">Default</button>
-    <button onclick="showSpecificModal(prompt('Type the modal # (Open After # Previous Modals) that you want to show.'))">Modal By #</button>
-    <button onclick="showSpecificModal(1)">Full</button>
-    <button onclick="showSpecificModal(2)">Floating</button>
-    <button onclick="showSpecificModal(3)">Bottom</button>
-    <button onclick="showSpecificModal(4)">Desktop</button>
+  <hr />
+  <h4>Show Modal</h4>
+  <button onclick="showModal()">Default</button>
+  <button
+    onclick="showSpecificModal(prompt('Type the modal # (Open After # Previous Modals) that you want to show.'))">Modal
+    By #</button>
+  <button onclick="showSpecificModal(1)">Full</button>
+  <button onclick="showSpecificModal(2)">Floating</button>
+  <button onclick="showSpecificModal(3)">Bottom</button>
+  <button onclick="showSpecificModal(4)">Desktop</button>
+  <button onclick="showSpecificModal(6)">drsqwatch</button>
+  <!-- <button onclick="showSpecificModal(4)">Desktop</button> -->
 
-    <p>Currently these will work only for staging env</p>
 
-    <hr>
-    <p>Tenant: Test Page - Nurul</p>
+  <p>Currently these will work only for staging env</p>
 
-    
+  <hr>
+  <p>Tenant: Test Page - Nurul</p>
 
-    <script>
-      const showModal = () => {
-        console.log('"voyage_modal" Cookie has been deleted.');
-        document.cookie =
-          'voyage_modal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        location.reload();
-      };
-      const showSpecificModal = (modalNum) => {
-        // const modalNum = prompt('Type the modal # that you want to show.');
-        console.log('"voyage_modal" Cookie has been deleted.');
-        document.cookie = 'voyage_modal=' + modalNum + ';path=/;';
-        location.reload();
-      };
-    </script>
-    <script src="document.js"></script>
-  </body>
+
+
+  <script>
+    const showModal = () => {
+      console.log('"voyage_modal" Cookie has been deleted.');
+      document.cookie =
+        'voyage_modal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      location.reload();
+    };
+    const showSpecificModal = (modalNum) => {
+      // const modalNum = prompt('Type the modal # that you want to show.');
+      console.log('"voyage_modal" Cookie has been deleted.');
+      document.cookie = 'voyage_modal=' + modalNum + ';path=/;';
+      location.reload();
+    };
+  </script>
+  <script src="document.js"></script>
+</body>
+
 </html>
